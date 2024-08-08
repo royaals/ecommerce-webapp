@@ -1,17 +1,18 @@
-import { Outlet, Route, Routes } from "react-router-dom";
-import "./App.css";
 
-import CustomerRoutes from "./Routers/CustomerRoutes";
-import Navigation from "./Customer/components/Navigation/Navigation";
-import Footer from "./Customer/components/Footer/Footer";
+
+import './App.css';
+
+import { Route, Routes } from 'react-router-dom';
+import CustomerRouters from './routers/CustomerRouters.jsx';
+import AdminRouters from './routers/AdminRouters.jsx';
+
 function App() {
   return (
-    <div className="App">
-      <Navigation />
+    <div className="">
       <Routes>
-        <Route path="/*" element={<CustomerRoutes />} />
+        <Route path='/*' element={<CustomerRouters />} />
+        <Route path='/admin/*' element={<AdminRouters />}></Route>
       </Routes>
-      <Footer />
     </div>
   );
 }
