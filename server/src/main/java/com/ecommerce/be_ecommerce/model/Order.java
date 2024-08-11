@@ -1,4 +1,4 @@
-package com.ecommerce.be_ecommerce.model;
+package com.royal.model;
 
 import jakarta.persistence.*;
 
@@ -13,7 +13,7 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="order_id")
+    @Column(name = "order_id")
     private String orderId;
 
     @ManyToOne
@@ -45,7 +45,10 @@ public class Order {
     public Order() {
     }
 
-    public Order(Long id, String orderId, User user, List<OrderItem> orderItems, LocalDateTime orderDate, LocalDateTime deliveryDate, Address shippingAddress, PaymentDetails paymentDetails, double totalPrice, Integer totalDiscountedPrice, Integer discount, String orderStatus, int totalItems, LocalDateTime createdAt) {
+    public Order(Long id, String orderId, User user, List<OrderItem> orderItems, LocalDateTime orderDate,
+            LocalDateTime deliveryDate, Address shippingAddress, PaymentDetails paymentDetails, double totalPrice,
+            Integer totalDiscountedPrice, Integer discount, String orderStatus, int totalItems,
+            LocalDateTime createdAt) {
         this.id = id;
         this.orderId = orderId;
         this.user = user;

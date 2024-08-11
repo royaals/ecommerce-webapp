@@ -1,4 +1,4 @@
-package com.ecommerce.be_ecommerce.service.impl;
+package com.royal.service.impl;
 
 import com.ecommerce.be_ecommerce.model.OrderItem;
 import com.ecommerce.be_ecommerce.repository.OrderItemRepository;
@@ -13,6 +13,7 @@ public class OrderItemServiceImpl implements OrderItemService {
     public OrderItemServiceImpl(OrderItemRepository orderItemRepository) {
         this.orderItemRepository = orderItemRepository;
     }
+
     @Override
     public OrderItem createOrderItem(OrderItem orderItem) {
         return orderItemRepository.save(orderItem);

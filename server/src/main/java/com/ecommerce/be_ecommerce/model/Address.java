@@ -1,4 +1,4 @@
-package com.ecommerce.be_ecommerce.model;
+package com.royal.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -9,23 +9,23 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="first_name")
+    @Column(name = "first_name")
     private String firstName;
-    @Column(name="last_name")
+    @Column(name = "last_name")
     private String lastName;
-    @Column(name="street_address")
+    @Column(name = "street_address")
     private String streetAddress;
-    @Column(name="city")
+    @Column(name = "city")
     private String city;
 
-    @Column(name="state")
+    @Column(name = "state")
     private String state;
 
-    @Column(name="zip_code")
+    @Column(name = "zip_code")
     private String zipCode;
 
     @ManyToOne
-    @JoinColumn(name="user_id")
+    @JoinColumn(name = "user_id")
     @JsonIgnore
     private User user;
     private String mobile;
@@ -105,7 +105,8 @@ public class Address {
         this.mobile = mobile;
     }
 
-    public Address(Long id, String firstName, String lastName, String streetAddress, String city, String state, String zipCode, User user, String mobile) {
+    public Address(Long id, String firstName, String lastName, String streetAddress, String city, String state,
+            String zipCode, User user, String mobile) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

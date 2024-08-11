@@ -1,5 +1,4 @@
-package com.ecommerce.be_ecommerce.model;
-
+package com.royal.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;

@@ -1,4 +1,4 @@
-package com.ecommerce.be_ecommerce.request;
+package com.royal.request;
 
 import com.ecommerce.be_ecommerce.model.Size;
 

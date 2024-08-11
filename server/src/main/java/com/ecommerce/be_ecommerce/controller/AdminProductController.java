@@ -1,4 +1,4 @@
-package com.ecommerce.be_ecommerce.controller;
+package com.royal.controller;
 
 import com.ecommerce.be_ecommerce.exception.ProductException;
 import com.ecommerce.be_ecommerce.model.Product;
@@ -17,32 +17,24 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/admin/products")
-@SecurityRequirement(
-        name = "Bearer Authentication"
-)
+@SecurityRequirement(name = "Bearer Authentication")
 @Tag(name = "Admin Product", description = "APIs for Admin to manage products")
 public class AdminProductController {
     @Autowired
     private ProductService productService;
 
     @Operation(summary = "Create a new product")
-    @io.swagger.v3.oas.annotations.responses.ApiResponse(
-            responseCode = "201",
-            description = "Product created"
-    )
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "201", description = "Product created")
     @PostMapping
-    public ResponseEntity<Product> createProduct(@RequestBody CreateProductRequest req){
+    public ResponseEntity<Product> createProduct(@RequestBody CreateProductRequest req) {
         Product product = productService.createProduct(req);
         return new ResponseEntity<Product>(product, HttpStatus.CREATED);
     }
 
     @Operation(summary = "Delete a product")
-    @io.swagger.v3.oas.annotations.responses.ApiResponse(
-            responseCode = "200",
-            description = "Product deleted"
-    )
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Product deleted")
     @DeleteMapping("/{productId}/delete")
-    public ResponseEntity<ApiResponse> deleteProduct(@PathVariable Long productId) throws ProductException{
+    public ResponseEntity<ApiResponse> deleteProduct(@PathVariable Long productId) throws ProductException {
         productService.deleteProduct(productId);
         ApiResponse res = new ApiResponse();
         res.setMessage("Product deleted successfully");
@@ -51,10 +43,7 @@ public class AdminProductController {
     }
 
     @Operation(summary = "Get all products")
-    @io.swagger.v3.oas.annotations.responses.ApiResponse(
-            responseCode = "200",
-            description = "List of products"
-    )
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "List of products")
     @GetMapping("/all")
     public ResponseEntity<List<Product>> getAllProducts() {
         List<Product> products = productService.findAllProducts();
@@ -63,24 +52,19 @@ public class AdminProductController {
     }
 
     @Operation(summary = "Update a product")
-    @io.swagger.v3.oas.annotations.responses.ApiResponse(
-            responseCode = "200",
-            description = "Product updated"
-    )
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Product updated")
     @PutMapping("/{productId}/update")
-    public ResponseEntity<Product> updateProduct(@RequestBody Product product, @PathVariable Long productId) throws ProductException{
+    public ResponseEntity<Product> updateProduct(@RequestBody Product product, @PathVariable Long productId)
+            throws ProductException {
         Product updatedProduct = productService.updateProduct(productId, product);
         return new ResponseEntity<Product>(updatedProduct, HttpStatus.OK);
     }
 
     @Operation(summary = "Create multiple products")
-    @io.swagger.v3.oas.annotations.responses.ApiResponse(
-            responseCode = "201",
-            description = "Products created"
-    )
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "201", description = "Products created")
     @PostMapping("/create-multi")
-    public ResponseEntity<ApiResponse> createMultipleProducts(@RequestBody CreateProductRequest[] req){
-        for(CreateProductRequest product: req){
+    public ResponseEntity<ApiResponse> createMultipleProducts(@RequestBody CreateProductRequest[] req) {
+        for (CreateProductRequest product : req) {
             productService.createProduct(product);
         }
         ApiResponse res = new ApiResponse();
@@ -88,6 +72,5 @@ public class AdminProductController {
         res.setStatus(true);
         return new ResponseEntity<ApiResponse>(res, HttpStatus.CREATED);
     }
-
 
 }

@@ -1,4 +1,4 @@
-package com.ecommerce.be_ecommerce.repository;
+package com.royal.repository;
 
 import com.ecommerce.be_ecommerce.model.Order;
 import org.springframework.data.jpa.repository.JpaRepository;

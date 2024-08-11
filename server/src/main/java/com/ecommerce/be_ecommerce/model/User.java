@@ -1,4 +1,4 @@
-package com.ecommerce.be_ecommerce.model;
+package com.royal.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -45,7 +45,9 @@ public class User {
 
     }
 
-    public User(Long id, String firstName, String lastName, String email, String password, String role, String mobile, List<Address> address, List<PaymentInformation> paymentInformation, List<Rating> ratings, List<Review> reviews, LocalDateTime createdAt) {
+    public User(Long id, String firstName, String lastName, String email, String password, String role, String mobile,
+            List<Address> address, List<PaymentInformation> paymentInformation, List<Rating> ratings,
+            List<Review> reviews, LocalDateTime createdAt) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

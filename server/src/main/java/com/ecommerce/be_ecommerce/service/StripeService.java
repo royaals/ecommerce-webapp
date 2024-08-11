@@ -1,4 +1,4 @@
-package com.ecommerce.be_ecommerce.service;
+package com.royal.service;
 
 import com.stripe.Stripe;
 import com.stripe.exception.StripeException;

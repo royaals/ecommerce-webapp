@@ -1,4 +1,4 @@
-package com.ecommerce.be_ecommerce.request;
+package com.royal.request;
 
 public class RatingRequest {
 

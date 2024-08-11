@@ -1,4 +1,4 @@
-package com.ecommerce.be_ecommerce.response;
+package com.royal.response;
 
 public class AuthResponse {
 
@@ -10,6 +10,7 @@ public class AuthResponse {
         this.jwt = jwt;
         this.message = message;
     }
+
     public AuthResponse() {
     }
 

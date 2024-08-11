@@ -1,4 +1,4 @@
-package com.ecommerce.be_ecommerce.service.impl;
+package com.royal.service.impl;
 
 import com.ecommerce.be_ecommerce.exception.OrderException;
 import com.ecommerce.be_ecommerce.model.*;
@@ -24,7 +24,10 @@ public class OrderServiceImpl implements OrderService {
     private CartItemService cartItemService;
     private ProductService productService;
 
-    public OrderServiceImpl(OrderRepository orderRepository, CartService cartService, AddressRepository addressRepository, UserRepository userRepository, OrderItemService orderItemService, OrderItemRepository orderItemRepository, CartRepository cartRepository, CartItemService cartItemService, ProductService productService) {
+    public OrderServiceImpl(OrderRepository orderRepository, CartService cartService,
+            AddressRepository addressRepository, UserRepository userRepository, OrderItemService orderItemService,
+            OrderItemRepository orderItemRepository, CartRepository cartRepository, CartItemService cartItemService,
+            ProductService productService) {
         this.orderRepository = orderRepository;
         this.cartService = cartService;
         this.addressRepository = addressRepository;
@@ -35,6 +38,7 @@ public class OrderServiceImpl implements OrderService {
         this.cartItemService = cartItemService;
         this.productService = productService;
     }
+
     @Override
     public Order createOrder(User user, Address shippingAddress) throws OrderException {
         shippingAddress.setUser(user);
@@ -141,7 +145,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void deleteOrder(Long orderId) throws OrderException{
+    public void deleteOrder(Long orderId) throws OrderException {
         Order order = findOrderById(orderId);
         orderRepository.delete(order);
     }

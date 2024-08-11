@@ -1,5 +1,4 @@
-package com.ecommerce.be_ecommerce.config;
-
+package com.royal.config;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -23,11 +22,11 @@ import java.util.List;
 
 public class JwtValidator extends OncePerRequestFilter {
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+            throws ServletException, IOException {
         String jwt = request.getHeader(JwtConstant.JWT_HEADER);
 
         if (jwt != null) {
-
 
             String token = jwt.substring(7);
             try {

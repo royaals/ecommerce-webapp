@@ -1,4 +1,4 @@
-package com.ecommerce.be_ecommerce.service.impl;
+package com.royal.service.impl;
 
 import com.ecommerce.be_ecommerce.exception.ProductException;
 import com.ecommerce.be_ecommerce.model.Cart;
@@ -18,11 +18,13 @@ public class CartServiceImpl implements CartService {
     private CartItemService cartItemService;
     private ProductService productService;
 
-    public CartServiceImpl(CartRepository cartRepository, CartItemService cartItemService, ProductService productService) {
+    public CartServiceImpl(CartRepository cartRepository, CartItemService cartItemService,
+            ProductService productService) {
         this.cartRepository = cartRepository;
-        this.cartItemService= cartItemService;
+        this.cartItemService = cartItemService;
         this.productService = productService;
     }
+
     @Override
     public Cart createCart(User user) {
         Cart cart = new Cart();
@@ -38,7 +40,7 @@ public class CartServiceImpl implements CartService {
 
         CartItem isPresent = cartItemService.isCartItemExist(cart, product, req.getSize(), userId);
 
-        if(isPresent == null){
+        if (isPresent == null) {
             CartItem cartItem = new CartItem();
             cartItem.setCart(cart);
             cartItem.setProduct(product);
@@ -74,8 +76,6 @@ public class CartServiceImpl implements CartService {
         cart.setTotalItem(totalItems);
         cart.setDiscount(totalPrice - totalDiscountedPrice);
         return cartRepository.save(cart);
-
-
 
     }
 }

@@ -1,4 +1,4 @@
-package com.ecommerce.be_ecommerce.model;
+package com.royal.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -14,12 +14,12 @@ public class Review {
     private String review;
 
     @ManyToOne
-    @JoinColumn(name="product_id")
+    @JoinColumn(name = "product_id")
     @JsonIgnore
     private Product product;
 
     @ManyToOne
-    @JoinColumn(name="user_id")
+    @JoinColumn(name = "user_id")
     private User user;
 
     private LocalDateTime createdAt;

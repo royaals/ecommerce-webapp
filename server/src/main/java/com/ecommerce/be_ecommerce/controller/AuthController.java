@@ -1,4 +1,4 @@
-package com.ecommerce.be_ecommerce.controller;
+package com.royal.controller;
 
 import com.ecommerce.be_ecommerce.config.JwtProvider;
 import com.ecommerce.be_ecommerce.exception.UserException;
@@ -38,8 +38,8 @@ public class AuthController {
 
     private CartService cartService;
 
-
-    public AuthController(UserRepository userRepository, JwtProvider jwtProvider, PasswordEncoder passwordEncoder, CustomUserServiceImpl customUserServiceImpl, CartService cartService){
+    public AuthController(UserRepository userRepository, JwtProvider jwtProvider, PasswordEncoder passwordEncoder,
+            CustomUserServiceImpl customUserServiceImpl, CartService cartService) {
         this.userRepository = userRepository;
         this.jwtProvider = jwtProvider;
         this.passwordEncoder = passwordEncoder;
@@ -48,24 +48,19 @@ public class AuthController {
 
     }
 
-
     @Operation(description = "Create User")
-    @ApiResponse(
-            responseCode = "201",
-            description = "User created"
-    )
+    @ApiResponse(responseCode = "201", description = "User created")
     @PostMapping("/signup")
-    public ResponseEntity<AuthResponse> createUserHandler(@RequestBody User user) throws UserException{
+    public ResponseEntity<AuthResponse> createUserHandler(@RequestBody User user) throws UserException {
         String email = user.getEmail();
         String password = user.getPassword();
         String firstName = user.getFirstName();
         String lastName = user.getLastName();
 
         User isEmailExist = userRepository.findByEmail(email);
-        if(isEmailExist != null){
+        if (isEmailExist != null) {
             throw new UserException("Email already exist");
         }
-
 
         User createdUser = new User();
         createdUser.setEmail(email);
@@ -76,7 +71,8 @@ public class AuthController {
         User savedUser = userRepository.save(createdUser);
         Cart cart = cartService.createCart(savedUser);
 
-        Authentication authentication = new UsernamePasswordAuthenticationToken(savedUser.getEmail(), savedUser.getPassword());
+        Authentication authentication = new UsernamePasswordAuthenticationToken(savedUser.getEmail(),
+                savedUser.getPassword());
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         String token = jwtProvider.generateToken(authentication);
@@ -88,12 +84,9 @@ public class AuthController {
     }
 
     @Operation(description = "Login User")
-    @ApiResponse(
-            responseCode = "200",
-            description = "User logged in"
-    )
+    @ApiResponse(responseCode = "200", description = "User logged in")
     @PostMapping("/signin")
-    public ResponseEntity<AuthResponse> loginUserHandler(@RequestBody LoginRequest loginRequest) throws UserException{
+    public ResponseEntity<AuthResponse> loginUserHandler(@RequestBody LoginRequest loginRequest) throws UserException {
         String username = loginRequest.getEmail();
         String password = loginRequest.getPassword();
         Authentication authentication = authenticate(username, password);
@@ -107,16 +100,15 @@ public class AuthController {
 
         return new ResponseEntity<AuthResponse>(authResponse, HttpStatus.OK);
 
-
     }
 
     private Authentication authenticate(String username, String password) {
         UserDetails userDetails = customUserServiceImpl.loadUserByUsername(username);
         System.out.println(userDetails.getUsername());
-        if(userDetails == null){
+        if (userDetails == null) {
             throw new BadCredentialsException("Invalid Username");
         }
-        if(!passwordEncoder.matches(password, userDetails.getPassword())) {
+        if (!passwordEncoder.matches(password, userDetails.getPassword())) {
             throw new BadCredentialsException("Invalid Password");
         }
         return new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());

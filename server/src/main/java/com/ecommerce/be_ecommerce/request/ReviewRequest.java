@@ -1,4 +1,4 @@
-package com.ecommerce.be_ecommerce.request;
+package com.royal.request;
 
 public class ReviewRequest {
 
@@ -8,6 +8,7 @@ public class ReviewRequest {
 
     public ReviewRequest() {
     }
+
     public Long getProductId() {
         return productId;
     }

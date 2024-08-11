@@ -1,10 +1,10 @@
-package com.ecommerce.be_ecommerce.response;
+package com.royal.response;
 
 public class ApiResponse {
     private String message;
     private boolean status;
 
-    public ApiResponse (){
+    public ApiResponse() {
 
     }
 

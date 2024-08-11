@@ -1,4 +1,4 @@
-package com.ecommerce.be_ecommerce.service;
+package com.royal.service;
 
 import com.ecommerce.be_ecommerce.exception.ProductException;
 import com.ecommerce.be_ecommerce.model.Review;
@@ -9,5 +9,6 @@ import java.util.List;
 
 public interface ReviewService {
     public Review createReview(ReviewRequest req, User user) throws ProductException;
+
     public List<Review> getAllReview(Long productId);
 }

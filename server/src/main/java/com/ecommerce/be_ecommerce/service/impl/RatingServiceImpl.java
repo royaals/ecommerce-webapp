@@ -1,4 +1,4 @@
-package com.ecommerce.be_ecommerce.service.impl;
+package com.royal.service.impl;
 
 import com.ecommerce.be_ecommerce.exception.ProductException;
 import com.ecommerce.be_ecommerce.model.Product;
@@ -22,6 +22,7 @@ public class RatingServiceImpl implements RatingService {
         this.ratingRepository = ratingRepository;
         this.productService = productService;
     }
+
     @Override
     public Rating createRating(RatingRequest req, User user) throws ProductException {
         Product product = productService.findProductById(req.getProductId());

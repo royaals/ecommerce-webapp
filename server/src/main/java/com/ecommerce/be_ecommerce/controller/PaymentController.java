@@ -1,4 +1,4 @@
-package com.ecommerce.be_ecommerce.controller;
+package com.royal.controller;
 
 import com.ecommerce.be_ecommerce.exception.OrderException;
 import com.ecommerce.be_ecommerce.model.Order;
@@ -14,9 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
-@SecurityRequirement(
-        name = "Bearer Authentication"
-)
+@SecurityRequirement(name = "Bearer Authentication")
 public class PaymentController {
     @Value("${stripe.publish.key}")
     private String stripePublishKey;
@@ -33,13 +31,13 @@ public class PaymentController {
     @Autowired
     private OrderRepository orderRepository;
 
-//    @PostMapping("/payments/{orderId}")
-//    public ResponseEntity<PaymentLinkResponse> createPaymentLink(
-//            @PathVariable Long orderId, @RequestHeader("Authorization") String token
-//    ) throws OrderException{
-//        Order order = orderService.findOrderById(orderId);
-//        try{
-//
-//        }
-//    }
+    // @PostMapping("/payments/{orderId}")
+    // public ResponseEntity<PaymentLinkResponse> createPaymentLink(
+    // @PathVariable Long orderId, @RequestHeader("Authorization") String token
+    // ) throws OrderException{
+    // Order order = orderService.findOrderById(orderId);
+    // try{
+    //
+    // }
+    // }
 }

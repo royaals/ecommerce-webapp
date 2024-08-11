@@ -1,4 +1,4 @@
-package com.ecommerce.be_ecommerce.model;
+package com.royal.model;
 
 public class PaymentDetails {
 
@@ -9,11 +9,13 @@ public class PaymentDetails {
     private String stripepayPaymentLinkReferenceId;
     private String stripepayPaymentLinkStatus;
     private String stripepayPaymentId;
-     public PaymentDetails() {
 
-     }
+    public PaymentDetails() {
 
-    public PaymentDetails(String paymentMethod, String status, String paymentId, String stripepayPaymentLinkId, String stripepayPaymentLinkReferenceId, String stripepayPaymentLinkStatus, String stripepayPaymentId) {
+    }
+
+    public PaymentDetails(String paymentMethod, String status, String paymentId, String stripepayPaymentLinkId,
+            String stripepayPaymentLinkReferenceId, String stripepayPaymentLinkStatus, String stripepayPaymentId) {
         this.paymentMethod = paymentMethod;
         this.status = status;
         this.paymentId = paymentId;

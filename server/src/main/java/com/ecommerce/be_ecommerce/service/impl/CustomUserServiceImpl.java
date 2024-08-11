@@ -1,4 +1,4 @@
-package com.ecommerce.be_ecommerce.service.impl;
+package com.royal.service.impl;
 
 import com.ecommerce.be_ecommerce.model.User;
 import com.ecommerce.be_ecommerce.repository.UserRepository;
@@ -19,11 +19,10 @@ public class CustomUserServiceImpl implements UserDetailsService {
         this.userRepository = userRepository;
     }
 
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(username);
-        if(user == null){
+        if (user == null) {
             throw new UsernameNotFoundException("User not found - " + username);
         }
 

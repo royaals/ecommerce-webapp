@@ -1,4 +1,4 @@
-package com.ecommerce.be_ecommerce.model;
+package com.royal.model;
 
 import jakarta.persistence.*;
 
@@ -24,7 +24,7 @@ public class Product {
     @Column(name = "price")
     private int price;
 
-    @Column(name ="discounted_price")
+    @Column(name = "discounted_price")
     private int discountedPrice;
 
     @Column(name = "discount_percent")
@@ -33,18 +33,18 @@ public class Product {
     @Column(name = "quantity")
     private int quantity;
 
-    @Column(name="brand")
+    @Column(name = "brand")
     private String brand;
 
-    @Column(name="color")
+    @Column(name = "color")
     private String color;
 
     @Embedded
     @ElementCollection
-    @Column(name="sizes")
+    @Column(name = "sizes")
     private Set<Size> sizes = new HashSet<>();
 
-    @Column(name="image_url")
+    @Column(name = "image_url")
     private String imageUrl;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -53,7 +53,7 @@ public class Product {
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Review> reviews = new ArrayList<>();
 
-    @Column(name="num_ratings")
+    @Column(name = "num_ratings")
     private int numRatings;
 
     @ManyToOne
@@ -65,7 +65,9 @@ public class Product {
     public Product() {
     }
 
-    public Product(Long id, String title, String description, int price, int discountedPrice, int discountPercent, int quantity, String brand, String color, Set<Size> sizes, String imageUrl, List<Rating> ratings, List<Review> reviews, int numRatings, Category category, LocalDateTime createdAt) {
+    public Product(Long id, String title, String description, int price, int discountedPrice, int discountPercent,
+            int quantity, String brand, String color, Set<Size> sizes, String imageUrl, List<Rating> ratings,
+            List<Review> reviews, int numRatings, Category category, LocalDateTime createdAt) {
         this.id = id;
         this.title = title;
         this.description = description;

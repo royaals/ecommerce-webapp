@@ -1,4 +1,4 @@
-package com.ecommerce.be_ecommerce.exception;
+package com.royal.exception;
 
 public class CartItemException extends Exception {
 

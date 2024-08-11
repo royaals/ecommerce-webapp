@@ -1,4 +1,4 @@
-package com.ecommerce.be_ecommerce.service.impl;
+package com.royal.service.impl;
 
 import com.ecommerce.be_ecommerce.exception.CartItemException;
 import com.ecommerce.be_ecommerce.exception.UserException;
@@ -20,11 +20,14 @@ public class CartItemServiceImpl implements CartItemService {
     private CartItemRepository cartItemRepository;
     private UserService userService;
     private CartRepository cartRepository;
-    public CartItemServiceImpl(CartItemRepository cartItemRepository, UserService userService, CartRepository cartRepository) {
+
+    public CartItemServiceImpl(CartItemRepository cartItemRepository, UserService userService,
+            CartRepository cartRepository) {
         this.cartItemRepository = cartItemRepository;
         this.userService = userService;
         this.cartRepository = cartRepository;
     }
+
     @Override
     public CartItem createCartItem(CartItem cartItem) {
         cartItem.setQuantity(1);
@@ -41,7 +44,7 @@ public class CartItemServiceImpl implements CartItemService {
         CartItem item = findCartItemById(id);
         User user = userService.findUserById(userId);
 
-        if(user.getId().equals(userId)){
+        if (user.getId().equals(userId)) {
             item.setQuantity(cartItem.getQuantity());
 
             Product product = item.getProduct();
@@ -69,10 +72,9 @@ public class CartItemServiceImpl implements CartItemService {
     public void removeCartItem(Long userId, Long cartItemId) throws CartItemException, UserException {
         CartItem cartItem = findCartItemById(cartItemId);
         User user = userService.findUserById(userId);
-        if(user.getId().equals(userId)){
+        if (user.getId().equals(userId)) {
             cartItemRepository.delete(cartItem);
-        }
-        else {
+        } else {
             throw new UserException("You can't remove another users item");
         }
     }
@@ -82,7 +84,7 @@ public class CartItemServiceImpl implements CartItemService {
 
         Optional<CartItem> cartItem = cartItemRepository.findById(cartItemId);
 
-        if(cartItem.isPresent()){
+        if (cartItem.isPresent()) {
             return cartItem.get();
         }
         throw new CartItemException("Cart item not found");

@@ -1,4 +1,4 @@
-package com.ecommerce.be_ecommerce.model;
+package com.royal.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -32,7 +32,8 @@ public class OrderItem {
     public OrderItem() {
     }
 
-    public OrderItem(Long id, Order order, Product product, String size, int quantity, Integer price, Integer discountedPrice, Long userId, LocalDateTime deliveryDate) {
+    public OrderItem(Long id, Order order, Product product, String size, int quantity, Integer price,
+            Integer discountedPrice, Long userId, LocalDateTime deliveryDate) {
         this.id = id;
         this.order = order;
         this.product = product;

@@ -1,4 +1,4 @@
-package com.ecommerce.be_ecommerce.config;
+package com.royal.config;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -13,7 +13,7 @@ import java.util.Date;
 public class JwtProvider {
     SecretKey key = Keys.hmacShaKeyFor(JwtConstant.SECRET_KEY.getBytes());
 
-    public String generateToken(Authentication auth){
+    public String generateToken(Authentication auth) {
         Date newDate = new Date();
         String jwt = Jwts.builder()
                 .setIssuedAt(newDate)
@@ -24,7 +24,7 @@ public class JwtProvider {
         return jwt;
     }
 
-    public String getEmailFromToken(String jwt){
+    public String getEmailFromToken(String jwt) {
         String token = jwt.substring(7);
 
         Claims claims = Jwts.parserBuilder()

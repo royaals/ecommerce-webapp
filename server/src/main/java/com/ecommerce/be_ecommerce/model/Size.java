@@ -1,10 +1,9 @@
-package com.ecommerce.be_ecommerce.model;
+package com.royal.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
 
 public class Size {
 

@@ -1,4 +1,4 @@
-package com.ecommerce.be_ecommerce.controller;
+package com.royal.controller;
 
 import com.ecommerce.be_ecommerce.exception.ProductException;
 import com.ecommerce.be_ecommerce.exception.UserException;
@@ -20,9 +20,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/ratings")
-@SecurityRequirement(
-        name = "Bearer Authentication"
-)
+@SecurityRequirement(name = "Bearer Authentication")
 @Tag(name = "Rating", description = "APIs for Rating Management")
 public class RatingController {
     @Autowired
@@ -32,26 +30,22 @@ public class RatingController {
     private RatingService ratingService;
 
     @Operation(description = "Create Rating")
-    @ApiResponse(
-            responseCode = "201",
-            description = "Rating created"
-    )
+    @ApiResponse(responseCode = "201", description = "Rating created")
     @PostMapping("/create")
-    public ResponseEntity<Rating> createRating(@RequestBody RatingRequest req, @RequestHeader("Authorization") String token)
-    throws UserException, ProductException {
+    public ResponseEntity<Rating> createRating(@RequestBody RatingRequest req,
+            @RequestHeader("Authorization") String token)
+            throws UserException, ProductException {
         User user = userService.findUserProfileByJwt(token);
-        Rating rating = ratingService.createRating(req,user);
-        return new ResponseEntity<Rating>( rating, HttpStatus.CREATED);
+        Rating rating = ratingService.createRating(req, user);
+        return new ResponseEntity<Rating>(rating, HttpStatus.CREATED);
 
     }
 
     @Operation(description = "Get Product's Rating")
-    @ApiResponse(
-            responseCode = "200",
-            description = "List of ratings"
-    )
+    @ApiResponse(responseCode = "200", description = "List of ratings")
     @GetMapping("/product/{productId}")
-    public ResponseEntity<List<Rating>> getProductsRating(@PathVariable Long productId, @RequestHeader("Authorization") String token) throws UserException, ProductException{
+    public ResponseEntity<List<Rating>> getProductsRating(@PathVariable Long productId,
+            @RequestHeader("Authorization") String token) throws UserException, ProductException {
         User user = userService.findUserProfileByJwt(token);
         List<Rating> ratings = ratingService.getProductsRating(productId);
         return new ResponseEntity<List<Rating>>(ratings, HttpStatus.OK);

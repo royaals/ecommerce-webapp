@@ -1,4 +1,4 @@
-package com.ecommerce.be_ecommerce.model;
+package com.royal.model;
 
 import jakarta.persistence.*;
 
@@ -12,17 +12,17 @@ public class Cart {
     private Long id;
 
     @OneToOne
-    @JoinColumn(name="user_id", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL,orphanRemoval = true)
-    @Column(name="cart_items")
+    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Column(name = "cart_items")
     private Set<CartItem> cartItems = new HashSet<>();
 
-    @Column(name="total_price")
+    @Column(name = "total_price")
     private double totalPrice;
 
-    @Column(name="total_item")
+    @Column(name = "total_item")
     private int totalItem;
 
     private int totalDiscountedPrice;

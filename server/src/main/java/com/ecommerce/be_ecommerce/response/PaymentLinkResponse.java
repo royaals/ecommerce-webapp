@@ -1,11 +1,11 @@
-package com.ecommerce.be_ecommerce.response;
+package com.royal.response;
 
 public class PaymentLinkResponse {
     private String payment_link_url;
 
     private String payment_link_id;
 
-    public PaymentLinkResponse(){
+    public PaymentLinkResponse() {
 
     }
 

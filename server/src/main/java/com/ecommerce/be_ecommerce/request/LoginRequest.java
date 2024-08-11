@@ -1,17 +1,18 @@
-package com.ecommerce.be_ecommerce.request;
+package com.royal.request;
 
 public class LoginRequest {
 
-        private String email;
-        private String password;
+    private String email;
+    private String password;
 
-        public LoginRequest() {}
+    public LoginRequest() {
+    }
 
-        public String getEmail() {
-            return email;
-        }
+    public String getEmail() {
+        return email;
+    }
 
-        public String getPassword() {
-            return password;
-        }
+    public String getPassword() {
+        return password;
+    }
 }

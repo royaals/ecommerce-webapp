@@ -1,4 +1,4 @@
-package com.ecommerce.be_ecommerce.service.impl;
+package com.royal.service.impl;
 
 import com.ecommerce.be_ecommerce.exception.ProductException;
 import com.ecommerce.be_ecommerce.model.Product;
@@ -20,11 +20,13 @@ public class ReviewServiceImpl implements ReviewService {
     private ProductService productService;
     private ProductRepository productRepository;
 
-    public ReviewServiceImpl(ReviewRepository reviewRepository, ProductService productService, ProductRepository productRepository) {
+    public ReviewServiceImpl(ReviewRepository reviewRepository, ProductService productService,
+            ProductRepository productRepository) {
         this.reviewRepository = reviewRepository;
         this.productService = productService;
         this.productRepository = productRepository;
     }
+
     @Override
     public Review createReview(ReviewRequest req, User user) throws ProductException {
         Product product = productService.findProductById(req.getProductId());

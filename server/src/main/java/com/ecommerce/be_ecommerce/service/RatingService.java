@@ -1,4 +1,4 @@
-package com.ecommerce.be_ecommerce.service;
+package com.royal.service;
 
 import com.ecommerce.be_ecommerce.exception.ProductException;
 import com.ecommerce.be_ecommerce.model.Rating;
